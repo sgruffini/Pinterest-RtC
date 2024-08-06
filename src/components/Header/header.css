@@ -1,43 +1,35 @@
+/* header.css */
 header {
-  background-color: #e60023;
+  background-color: #ff5252;
   color: white;
-  padding: 1rem;
+  padding: 20px 10px;
+  text-align: center;
+}
+header form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
 }
-
-header h1 {
-  cursor: pointer;
-  margin: 0;
-  font-size: 1.5rem;
+header input,
+header button {
+  padding: 10px;
 }
-
-form {
-  display: flex;
-  align-items: center;
-}
-
-input[type='text'] {
-  padding: 0.5rem;
+header button {
+  background-color: #333;
+  color: white;
   border: none;
-  border-radius: 5px;
-  margin-right: 0.5rem;
-  flex-grow: 1;
-  width: 200px;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  background-color: white;
-  color: #e60023;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #cccccc;
+@media (max-width: 768px) {
+  header form {
+    flex-direction: column;
+  }
+  header input,
+  header button {
+    width: 100%;
+    margin: 5px 0;
+  }
 }

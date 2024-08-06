@@ -1,12 +1,13 @@
-import { fetchImages } from '../../../app.js'
-import { renderImageGrid } from '../ImageGrid/ImageGrid.js'
+// En header.js
+import { fetchImages } from '../../../app.js' // Sube tres niveles desde Header
+import { renderImageGrid } from '../ImageGrid/ImageGrid.js' // Esta ruta está correcta, sube un nivel y entra a ImageGrid
 
 export function setupHeader() {
   const header = document.getElementById('header')
   header.innerHTML = `
-        <h1 id="logo">Pinterest Clone</h1>
+        <h1>Pinterest Clone</h1>
         <form id="searchForm">
-            <input type="text" id="searchInput" placeholder="Buscar imágenes..." required>
+            <input type="text" id="searchInput" placeholder="Buscar imágenes...">
             <button type="submit">Buscar</button>
         </form>
     `
@@ -19,12 +20,19 @@ export function setupHeader() {
       if (query) {
         const images = await fetchImages(query)
         renderImageGrid(images)
-        document.getElementById('searchInput').value = '' // Limpiar el input
+        document.getElementById('searchInput').value = ''
+      } else {
+        // Búsqueda por defecto si el campo está vacío
+        const images = await fetchImages('gatos')
+        renderImageGrid(images)
       }
     })
 
-  document.getElementById('logo').addEventListener('click', async () => {
-    const initialImages = await fetchImages('popular')
-    renderImageGrid(initialImages)
-  })
+  // Opción para resetear a imágenes populares haciendo clic en el logo
+  document
+    .getElementById('header')
+    .firstElementChild.addEventListener('click', async () => {
+      const initialImages = await fetchImages('popular')
+      renderImageGrid(initialImages)
+    })
 }

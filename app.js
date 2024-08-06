@@ -1,27 +1,26 @@
 import { setupHeader } from './src/components/Header/header.js'
 import { renderImageGrid } from './src/components/ImageGrid/ImageGrid.js'
 
-const ACCESS_KEY = 'c9GiK1qtazm9PZT5F2VFfN1upe1uUxwxsu-ML5BZ3J4'
+const ACCESS_KEY = 'c9Gik1atqzmz9PI52FVFflNupe1uUxwxsu-M5LBZ3J4'
 
-async function fetchImages(query) {
-  const url = `https://api.unsplash.com/search/photos?page=${query}&client_id=${ACCESS_KEY}`
+export async function fetchImages(query, page = 1) {
+  const url = `https://api.unsplash.com/search/photos?page=${page}&query=${encodeURIComponent(
+    query
+  )}&client_id=${ACCESS_KEY}`
+
   try {
     const response = await fetch(url)
-    const data = await response.json()
-    if (data && data.results) {
-      return data.results
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
     }
-    return [] // Devuelve un arreglo vacío si no hay resultados
+    const data = await response.json()
+    return data.results
   } catch (error) {
     console.error('Error fetching images:', error)
     return []
   }
 }
 
-window.onload = async () => {
+window.onload = () => {
   setupHeader()
-  const initialImages = await fetchImages('popular')
-  renderImageGrid(initialImages)
 }
-
-export { fetchImages }

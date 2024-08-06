@@ -1,17 +1,12 @@
 export function createImageCard(image) {
-  const imageCard = document.createElement('div')
-  imageCard.className = 'image-card'
+  const card = document.createElement('div')
+  card.className = 'image-card'
 
-  const imgElement = document.createElement('img')
-  imgElement.src = image.urls.small
-  imgElement.alt = image.description || 'Imagen de Unsplash'
+  const img = document.createElement('img')
+  img.src = image.urls.small
+  img.alt = image.description || 'Imagen de Unsplash'
 
-  const imageInfo = document.createElement('div')
-  imageInfo.className = 'image-info'
-  imageInfo.innerHTML = `<p>${image.user.name}</p><a href="${image.links.html}" target="_blank">Ver en Unsplash</a>`
+  card.appendChild(img)
 
-  imageCard.appendChild(imgElement)
-  imageCard.appendChild(imageInfo)
-
-  return imageCard
+  return card
 }

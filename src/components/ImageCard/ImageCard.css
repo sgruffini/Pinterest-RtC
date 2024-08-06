@@ -1,24 +1,11 @@
+/* ImageCard.css */
 .image-card {
-  display: flex;
-  flex-direction: column;
+  margin: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
-  background-color: white;
-  transition: transform 0.2s;
+  transition: transform 0.3s ease-in-out;
 }
-
 .image-card:hover {
-  transform: scale(1.02);
-}
-
-.image-card img {
-  width: 100%;
-  height: auto;
-}
-
-.image-info {
-  padding: 0.5rem;
-  text-align: center;
-  background-color: #f2f2f2;
+  transform: scale(1.03);
 }

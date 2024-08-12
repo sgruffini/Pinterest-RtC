@@ -33,3 +33,17 @@ header button {
     margin: 5px 0;
   }
 }
+
+@media (max-width: 480px) {
+  header {
+    padding: 15px 5px;
+  }
+  header form {
+    width: 100%;
+  }
+  header input,
+  header button {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+}

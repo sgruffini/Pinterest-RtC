@@ -24,3 +24,8 @@ export async function fetchImages(query, page = 1) {
 window.onload = () => {
   setupHeader()
 }
+
+const initialQuery = 'nature' // Cambia este término de búsqueda según tus necesidades
+const images = await fetchImages(initialQuery)
+
+renderImageGrid(images)
